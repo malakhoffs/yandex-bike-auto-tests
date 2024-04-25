@@ -2,15 +2,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
+
+
 
 @RunWith(Parameterized.class)
-public class MainTests{
-
-    WebDriver driver = new EdgeDriver();
-
-    MainPage functions = new MainPage(driver);
+public class MainTests extends WebdriverSetup {
 
     private final String name;
     private final String surname;
@@ -44,49 +40,24 @@ public class MainTests{
         };
     }
 
-    //Тест на кликабельность и тектс в футтерах
-    @Test
-    public void faqTest (){
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        functions.scrollToBottom();
-        Assert.assertTrue(functions.faqPaymentInfoClick());
-        Assert.assertTrue(functions.faqMultipleOrderClick());
-        Assert.assertTrue(functions.faqTermsClick());
-        Assert.assertTrue(functions.faqTodayOrderClick());
-        Assert.assertTrue(functions.faqExtendClick());
-        Assert.assertTrue(functions.faqChargerClick());
-        functions.scrollToBottom();
-        Assert.assertTrue(functions.faqCancelClick());
-        Assert.assertTrue(functions.faqFarAwayClick());
-        functions.secondOrderButtonClick();
-        driver.quit();
-    }
-
     //Тесты на заказ самоката с 2-х разных кнопок
     @Test
     public void makeHeaderOrder()  {
-        driver.get("https://qa-scooter.praktikum-services.ru/");
         MainPage functions = new MainPage(driver);
         OrderPage personel = new OrderPage(driver);
-        functions.firstOrderButtonClick();
+        functions.headerOrderButtonClick();
         personel.fillPersonalData(name, surname, address, metro, phone);
         personel.fillAdditionalData(deliveryDate, rentalPeriod, color, comment);
         Assert.assertEquals("Заказ оформлен", personel.successOrder());
-        driver.quit();
     }
     @Test
     public void makeBodyOrder() {
-        driver.get("https://qa-scooter.praktikum-services.ru/");
         MainPage functions = new MainPage(driver);
         OrderPage personel = new OrderPage(driver);
-        functions.firstOrderButtonClick();
+        functions.bodyOrderButtonClick();
         personel.pageLoadExpectation();
         personel.fillPersonalData(name, surname, address, metro, phone);
         personel.fillAdditionalData(deliveryDate, rentalPeriod, color, comment);
         Assert.assertEquals("Заказ оформлен", personel.successOrder());
-        driver.quit();
     }
 }
-
-
-

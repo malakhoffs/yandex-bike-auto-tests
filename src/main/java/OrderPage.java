@@ -1,8 +1,8 @@
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
+import java.time.*;
+
 
 
 public class OrderPage {
@@ -31,11 +31,11 @@ public class OrderPage {
     //Выбор цвета самоката
     private final By bikeColor = By.xpath("//div[contains(text(),'Цвет самоката')]");
     //Поле комментария для курьера
-    private final By courierComment = By.xpath("//div[@id=\"root\"]/div/div[2]/div[2]/div[4]/input");
+    private final By courierComment = By.xpath("//input[@placeholder='Комментарий для курьера']");
     //Кнопка "Заказать"
     private final By orderButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
     //Кнопка подтверждения заказа
-    private final By orderConfirmButton = By.xpath("//div[@id=\"root\"]/div/div[2]/div[5]/div[2]/button[2]");
+    private final By orderConfirmButton = By.xpath("//button[text()='Да']");
     //Сообщение об успешном заказе
     private final By messageOfOrderSucess = By.xpath("//div[contains(@class,'Order_ModalHeader')]");
 
