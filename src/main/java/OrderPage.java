@@ -21,7 +21,7 @@ public class OrderPage {
     //Поле для выбора станции метро
     private final By metroStationField = By.xpath("//input[@placeholder='* Станция метро']");
     //Поле для ввода номера телефона
-    private final By PhoneField = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
+    private final By phoneField = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
     //Кнопка "Далее"
     private final By nextButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
     //Поле для ввода даты начала аренды
@@ -49,7 +49,7 @@ public class OrderPage {
         driver.findElement(metroStationField).click();
         driver.findElement(metroStationField).sendKeys(metro);
         driver.findElement(By.xpath("//input[contains(@placeholder,'метро')]/../following-sibling::div")).click();
-        driver.findElement(PhoneField).sendKeys(phoneNumber);
+        driver.findElement(phoneField).sendKeys(phoneNumber);
         driver.findElement(nextButton).click();
     }
 
